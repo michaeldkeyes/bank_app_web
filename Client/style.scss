@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+
+$text: hsl(210, 5%, 10%);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: $text;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+}
+
+.headerBackground {
+  background-color: hsl(207, 100%, 36%);
+  height: 115px;
+  width: 100%;
+}
+
+.mainSection {
+  margin: auto;
+  max-width: 962px;
+  padding-left: 5px;
+}
+
+.enrollSection {
+  margin-bottom: 0.625rem;
+  padding-top: 1.875rem;
+}

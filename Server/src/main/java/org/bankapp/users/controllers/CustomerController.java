@@ -14,6 +14,22 @@ public class CustomerController {
         ctx.json(userService.getUser(Integer.parseInt(ctx.pathParam("id"))));
     }
 
+    public static void getAndAuthorizeUser(Context ctx) {
+        User user = new User();
+        user.setUsername(ctx.pathParam("username"));
+        user.setPassword(ctx.pathParam("password"));
+        User storedUser = userService.getUser(user.getUsername());
+        try {
+            if (userService.authorizeUser(user.getPassword(), storedUser.getPassword())) {
+                ctx.json(storedUser);
+            } else {
+                ctx.result("Wrong username/password");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
     public static void post(Context ctx) {
             User user = ctx.bodyAsClass(User.class);
             userService.createUser(user);

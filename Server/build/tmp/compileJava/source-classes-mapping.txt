@@ -4,16 +4,16 @@ org/bankapp/security/PasswordHasher.java
  org.bankapp.security.PasswordHasher
 org/bankapp/users/User.java
  org.bankapp.users.User
+org/bankapp/security/AUTH.java
+ org.bankapp.security.AUTH
+org/bankapp/users/UserDAO.java
+ org.bankapp.users.UserDAO
 org/bankapp/users/impl/UserDAOImpl.java
  org.bankapp.users.impl.UserDAOImpl
 org/bankapp/users/UserService.java
  org.bankapp.users.UserService
-org/bankapp/users/UserDAO.java
- org.bankapp.users.UserDAO
 org/bankapp/users/impl/UserServiceImpl.java
  org.bankapp.users.impl.UserServiceImpl
-org/bankapp/security/AUTH.java
- org.bankapp.security.AUTH
 org/bankapp/users/controllers/CustomerController.java
  org.bankapp.users.controllers.CustomerController
 org/bankapp/BankAppMain.java

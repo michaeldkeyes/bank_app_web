@@ -1,4 +1,4 @@
-const form = document.getElementById("registration-form");
+const form = document.getElementById("form");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -6,22 +6,13 @@ form.addEventListener("submit", (e) => {
   let FD = new FormData(e.currentTarget);
   FD = Object.fromEntries(FD.entries());
 
-  if (validatePasswords(FD)) {
-    const { username, password } = FD;
-    let data = {
-      username,
-      password,
-    };
-    registerSubmit(data);
-  } else {
-    alert("Passwords do not match!");
-  }
+  registerLogin(FD);
 });
 
-async function registerSubmit(data) {
+async function registerLogin(data) {
   const XHR = new XMLHttpRequest();
   const method = form.method;
-  const url = form.action;
+  const url = form.action + data.username + "/" + data.password;
 
   let urlEncodedData = "",
     urlEncodedDataPairs = [],
@@ -37,9 +28,10 @@ async function registerSubmit(data) {
 
   data = JSON.stringify(data);
 
+  console.log(data);
+
   XHR.addEventListener("load", (e) => {
     console.log(e.target.responseText);
-    window.location.href = "/login.html";
   });
 
   XHR.addEventListener("error", (e) => {
@@ -48,13 +40,5 @@ async function registerSubmit(data) {
 
   XHR.open(method, url);
 
-  XHR.send(data);
-}
-
-function validatePasswords(plainFormData) {
-  if (plainFormData.password === plainFormData.confirmPassword) {
-    return true;
-  }
-
-  return false;
+  XHR.send();
 }

@@ -16,7 +16,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(int id) {
-        return dao.findUserById(id);
+        return dao.findUser(id);
+    }
+
+    @Override
+    public User getUser(String username) {
+        return dao.findUser(username);
     }
 
     @Override
@@ -47,5 +52,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(int id) {
         dao.deleteUser(id);
+    }
+
+    @Override
+    public boolean authorizeUser(String typedPassword, String storedPassword) throws Exception {
+        try {
+            return PasswordHasher.validatePassword(typedPassword, storedPassword);
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            System.out.println(e);
+            //throw new BusinessException("An internal error occurred. Please contact sysadmin");
+            throw new Exception("Oh no");
+        }
     }
 }

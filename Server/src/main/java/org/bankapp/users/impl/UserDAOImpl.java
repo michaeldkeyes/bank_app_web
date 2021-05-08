@@ -11,12 +11,35 @@ import java.util.List;
 public class UserDAOImpl implements UserDAO {
 
     @Override
-    public User findUserById(int id) {
+    public User findUser(int id) {
         User user = new User();
         try (Connection connection = PostgresConnection.getConnection()) {
             String sql = "SELECT id, username, \"password\", date_created FROM bank_schema.users WHERE id = ?;\n";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setInt(1, id);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    user.setId(resultSet.getInt("id"));
+                    user.setUsername(resultSet.getString("username"));
+                    user.setPassword(resultSet.getString("password"));
+                    user.setDateCreated(resultSet.getDate("date_created"));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return user;
+    }
+
+    @Override
+    public User findUser(String username) {
+        User user = new User();
+        try (Connection connection = PostgresConnection.getConnection()) {
+            String sql = "SELECT id, username, \"password\", date_created FROM bank_schema.users WHERE username = ?;\n";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, username);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {

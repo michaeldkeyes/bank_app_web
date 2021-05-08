@@ -22,8 +22,6 @@ public class BankAppMain {
             javalinConfig.accessManager(((handler, ctx, permittedRoles) -> {
                 if (permittedRoles.contains(AUTH.ANYONE)) {
                     handler.handle(ctx);
-                } else if (permittedRoles.contains(AUTH.LOGGED_IN)) {
-                    System.out.println("Logged in!");
                 } else {
                     ctx.status(401).header(Header.WWW_AUTHENTICATE, "Basic");
                 }
@@ -37,12 +35,16 @@ public class BankAppMain {
         app.routes(() -> {
             UserService userService = new UserServiceImpl();
             path("/customer", () -> {
+                //get(CustomerController::getAndAuthorizeUser, roles(AUTH.ANYONE));
                 post(CustomerController::post, roles(AUTH.ANYONE));
                 put(ctx -> {
                     User user = ctx.bodyAsClass(User.class);
                     ctx.status(204).json(userService.updateUser(user));
                 });
-                path("/:id", () -> {
+                path("/:username/:password", () -> {
+                    get(CustomerController::getAndAuthorizeUser, roles(AUTH.ANYONE));
+                });
+                path("/id/:id", () -> {
                     get(CustomerController::getOne, roles(AUTH.ANYONE));
                     delete(ctx -> {
                         userService.deleteUser(Integer.parseInt(ctx.pathParam("id")));
@@ -61,8 +63,4 @@ public class BankAppMain {
 
         });
     }
-
-//    public static Role getUserRole(Context ctx) {
-//
-//    }
 }

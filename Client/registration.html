@@ -23,9 +23,25 @@
             Now that you're a member, you can enroll in digital banking and
             access your accounts using your mobile device or online.
           </p>
+
+          <form
+            action="http://localhost:7000/customer"
+            method="post"
+            id="registration-form"
+          >
+            <input type="text" name="username" id="username" />
+            <input type="password" name="password" id="password" />
+            <input
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+            />
+            <button type="submit">Register</button>
+          </form>
         </div>
       </main>
       <footer></footer>
     </div>
+    <script src="scripts/registration.js"></script>
   </body>
 </html>

@@ -1,16 +1,20 @@
-org/bankapp/customer/dao/CustomerDao.java
- org.bankapp.customer.dao.CustomerDao
-org/bankapp/customer/service/CustomerService.java
- org.bankapp.customer.service.CustomerService
-org/bankapp/users/User.java
- org.bankapp.users.User
 org/bankapp/dbutils/PostgresConnection.java
  org.bankapp.dbutils.PostgresConnection
-org/bankapp/customer/model/Customer.java
- org.bankapp.customer.model.Customer
-org/bankapp/customer/dao/impl/CustomerDaoImpl.java
- org.bankapp.customer.dao.impl.CustomerDaoImpl
-org/bankapp/customer/service/impl/CustomerServiceImpl.java
- org.bankapp.customer.service.impl.CustomerServiceImpl
-org/bankapp/BankappMain.java
- org.bankapp.BankappMain
+org/bankapp/security/PasswordHasher.java
+ org.bankapp.security.PasswordHasher
+org/bankapp/users/User.java
+ org.bankapp.users.User
+org/bankapp/users/impl/UserDAOImpl.java
+ org.bankapp.users.impl.UserDAOImpl
+org/bankapp/users/UserService.java
+ org.bankapp.users.UserService
+org/bankapp/users/UserDAO.java
+ org.bankapp.users.UserDAO
+org/bankapp/users/impl/UserServiceImpl.java
+ org.bankapp.users.impl.UserServiceImpl
+org/bankapp/security/AUTH.java
+ org.bankapp.security.AUTH
+org/bankapp/users/controllers/CustomerController.java
+ org.bankapp.users.controllers.CustomerController
+org/bankapp/BankAppMain.java
+ org.bankapp.BankAppMain

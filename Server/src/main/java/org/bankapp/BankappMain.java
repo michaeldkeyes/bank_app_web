@@ -1,31 +1,56 @@
 package org.bankapp;
 
 import io.javalin.Javalin;
-import io.javalin.core.JavalinConfig;
+import io.javalin.core.security.Role;
+import io.javalin.core.util.Header;
+import org.bankapp.security.AUTH;
 import org.bankapp.users.User;
+import org.bankapp.users.UserService;
+import org.bankapp.users.controllers.CustomerController;
+import org.bankapp.users.impl.UserServiceImpl;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
+import static io.javalin.core.security.SecurityUtil.roles;
 
-public class BankappMain {
+public class BankAppMain {
     public static void main(String[] args) {
-        Javalin app = Javalin.create(JavalinConfig::enableCorsForAllOrigins).start(7000);
+        Javalin app = Javalin.create(javalinConfig -> {
+            javalinConfig.enableCorsForAllOrigins();
+            javalinConfig.accessManager(((handler, ctx, permittedRoles) -> {
+                if (permittedRoles.contains(AUTH.ANYONE)) {
+                    handler.handle(ctx);
+                } else if (permittedRoles.contains(AUTH.LOGGED_IN)) {
+                    System.out.println("Logged in!");
+                } else {
+                    ctx.status(401).header(Header.WWW_AUTHENTICATE, "Basic");
+                }
+            }));
+        }).start(7000);
+
+        Set<Role> myRoles = new HashSet<>();
+        myRoles.add(AUTH.ANYONE);
+        myRoles.add(AUTH.LOGGED_IN);
 
         app.routes(() -> {
+            UserService userService = new UserServiceImpl();
             path("/customer", () -> {
-                post(ctx -> {
-                    System.out.println(ctx);
+                post(CustomerController::post, roles(AUTH.ANYONE));
+                put(ctx -> {
                     User user = ctx.bodyAsClass(User.class);
-
-                    ctx.status(201);
-                    ctx.json(user);
+                    ctx.status(204).json(userService.updateUser(user));
                 });
-                put(ctx -> ctx.result("Hello, Put!"));
+                path("/:id", () -> {
+                    get(CustomerController::getOne, roles(AUTH.ANYONE));
+                    delete(ctx -> {
+                        userService.deleteUser(Integer.parseInt(ctx.pathParam("id")));
+                        ctx.status(204);
+                    });
+                });
             });
-            path("/customer/:id", () -> {
-                get(ctx -> {});
-                delete(ctx -> ctx.result("Hello, Delete!"));
-            });
-            path("/customers", () -> get(ctx -> {}));
+            path("/customers", () -> get(ctx -> ctx.json(userService.getUsers()), roles(AUTH.ANYONE)));
             path("/employee", () -> {
                get(ctx -> {});
                post(ctx -> {});
@@ -35,7 +60,9 @@ public class BankappMain {
             path("/employees", () -> get(ctx -> {}));
 
         });
-
-        System.out.println("Running 7000!");
     }
+
+//    public static Role getUserRole(Context ctx) {
+//
+//    }
 }

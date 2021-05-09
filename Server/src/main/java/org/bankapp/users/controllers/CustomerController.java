@@ -16,14 +16,12 @@ public class CustomerController {
         ctx.json(userService.getUser(Integer.parseInt(ctx.pathParam("id"))));
     }
 
-    public static void getAndAuthorizeUser(Context ctx) {
-        User user = new User();
-        user.setUsername(ctx.pathParam("username"));
-        user.setPassword(ctx.pathParam("password"));
+    public static void login(Context ctx) {
+        User user = ctx.bodyAsClass(User.class);
         User storedUser = userService.getUser(user.getUsername());
         try {
-            if (userService.authorizeUser(user.getPassword(), storedUser.getPassword())) {
-                logger.info("Successfully logged in: " + storedUser);
+            if (storedUser.getPassword() != null && userService.authorizeUser(user.getPassword(), storedUser.getPassword())) {
+                logger.info("Successful login: " + storedUser);
                 ctx.json(storedUser);
             } else {
                 logger.info("Failed login");
@@ -32,6 +30,7 @@ public class CustomerController {
         } catch (Exception e) {
             logger.fatal(e);
         }
+
     }
 
     public static void post(Context ctx) {

@@ -36,11 +36,13 @@ async function loginCustomer(e) {
 
   let formData = new FormData(e.currentTarget);
   formData = Object.fromEntries(formData.entries());
-  const { username, password } = formData;
-  const url = `http://localhost:7000/customer/${username}/${password}`;
+  const url = `http://localhost:7000/customer/login`;
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify(formData),
+    });
 
     if (!response.ok) {
       const message = await response.json();

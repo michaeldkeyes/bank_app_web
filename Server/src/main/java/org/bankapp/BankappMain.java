@@ -41,8 +41,11 @@ public class BankAppMain {
                     User user = ctx.bodyAsClass(User.class);
                     ctx.status(204).json(userService.updateUser(user));
                 });
-                path("/:username/:password", () -> {
-                    get(CustomerController::getAndAuthorizeUser, roles(AUTH.ANYONE));
+//                path("/:username/:password", () -> {
+//                    get(CustomerController::getAndAuthorizeUser, roles(AUTH.ANYONE));
+//                });
+                path("/login", () -> {
+                   post(CustomerController::login, roles(AUTH.ANYONE));
                 });
                 path("/id/:id", () -> {
                     get(CustomerController::getOne, roles(AUTH.ANYONE));

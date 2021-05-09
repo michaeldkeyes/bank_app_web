@@ -1,44 +1,58 @@
-const form = document.getElementById("form");
+import elements from "./elements";
 
-form.addEventListener("submit", (e) => {
+const loginPage = (content) => {
+  content.innerHTML = "";
+
+  const form = elements.form();
+  const usernameLabel = elements.label();
+  usernameLabel.innerText = "Username";
+  const usernameInput = elements.input();
+  usernameInput.type = "text";
+  usernameInput.name = "username";
+  usernameInput.placeholder = "username";
+  const passwordLabel = elements.label();
+  passwordLabel.innerText = "Password";
+  const passwordInput = elements.input();
+  passwordInput.type = "password";
+  passwordInput.name = "password";
+  passwordInput.placeholder = "password";
+  const btn = elements.button();
+  btn.innerText = "Login";
+
+  form.addEventListener("submit", (e) => {
+    loginCustomer(e);
+  });
+
+  form.appendChild(usernameLabel);
+  form.appendChild(usernameInput);
+  form.appendChild(passwordLabel);
+  form.appendChild(passwordInput);
+  form.appendChild(btn);
+  content.appendChild(form);
+};
+
+async function loginCustomer(e) {
   e.preventDefault();
 
-  let FD = new FormData(e.currentTarget);
-  FD = Object.fromEntries(FD.entries());
+  let formData = new FormData(e.currentTarget);
+  formData = Object.fromEntries(formData.entries());
+  const { username, password } = formData;
+  const url = `http://localhost:7000/customer/${username}/${password}`;
 
-  registerLogin(FD);
-});
+  try {
+    const response = await fetch(url);
 
-async function registerLogin(data) {
-  const XHR = new XMLHttpRequest();
-  const method = form.method;
-  const url = form.action + data.username + "/" + data.password;
+    if (!response.ok) {
+      const message = await response.json();
+      console.log(message);
+      return;
+    }
 
-  let urlEncodedData = "",
-    urlEncodedDataPairs = [],
-    name;
-
-  for (name in data) {
-    urlEncodedDataPairs.push(
-      encodeURIComponent(name) + "=" + encodeURIComponent(data[name])
-    );
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
   }
-
-  urlEncodedData = urlEncodedDataPairs.join("&").replace(/%20/g, "+");
-
-  data = JSON.stringify(data);
-
-  console.log(data);
-
-  XHR.addEventListener("load", (e) => {
-    console.log(e.target.responseText);
-  });
-
-  XHR.addEventListener("error", (e) => {
-    console.log(e);
-  });
-
-  XHR.open(method, url);
-
-  XHR.send();
 }
+
+export default loginPage;

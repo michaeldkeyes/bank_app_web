@@ -1,5 +1,17 @@
-import homePage from "./views/home";
+import registerCustomer from "./register";
+import loginCustomer from "./login";
 
-const content = document.getElementById("content");
+const registerForm = document.getElementById("registerForm");
+const loginForm = document.getElementById("loginForm");
 
-homePage(content);
+registerForm.addEventListener("submit", (e) => {
+  registerCustomer(e);
+});
+
+loginForm.addEventListener("submit", (e) => {
+  loginCustomer(e);
+});
+// $("#loginForm").on("submit", function (e) {
+//   console.log(e);
+//   loginCustomer(e);
+// });

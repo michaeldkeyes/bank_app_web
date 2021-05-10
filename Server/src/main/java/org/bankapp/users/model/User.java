@@ -1,12 +1,16 @@
-package org.bankapp.users;
+package org.bankapp.users.model;
+
+import org.bankapp.accounts.model.Account;
 
 import java.sql.Date;
+import java.util.Set;
 
 public class User {
     private int id;
     private String username;
     private String password;
     private Date dateCreated;
+    private Set<Account> accounts;
 
     public User() {
     }
@@ -53,6 +57,14 @@ public class User {
 
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
+    }
+
+    public Set<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(Set<Account> accounts) {
+        this.accounts = accounts;
     }
 
     @Override

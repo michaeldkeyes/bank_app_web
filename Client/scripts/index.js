@@ -1,4 +1,4 @@
-import homePage from "./home";
+import homePage from "./views/home";
 
 const content = document.getElementById("content");
 

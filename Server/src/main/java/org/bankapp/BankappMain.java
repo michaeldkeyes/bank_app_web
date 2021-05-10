@@ -3,8 +3,9 @@ package org.bankapp;
 import io.javalin.Javalin;
 import io.javalin.core.security.Role;
 import io.javalin.core.util.Header;
+import org.bankapp.accounts.controller.AccountController;
 import org.bankapp.security.AUTH;
-import org.bankapp.users.User;
+import org.bankapp.users.model.User;
 import org.bankapp.users.UserService;
 import org.bankapp.users.controllers.CustomerController;
 import org.bankapp.users.impl.UserServiceImpl;
@@ -35,15 +36,11 @@ public class BankAppMain {
         app.routes(() -> {
             UserService userService = new UserServiceImpl();
             path("/customer", () -> {
-                //get(CustomerController::getAndAuthorizeUser, roles(AUTH.ANYONE));
                 post(CustomerController::post, roles(AUTH.ANYONE));
                 put(ctx -> {
                     User user = ctx.bodyAsClass(User.class);
                     ctx.status(204).json(userService.updateUser(user));
                 });
-//                path("/:username/:password", () -> {
-//                    get(CustomerController::getAndAuthorizeUser, roles(AUTH.ANYONE));
-//                });
                 path("/login", () -> {
                    post(CustomerController::login, roles(AUTH.ANYONE));
                 });
@@ -55,14 +52,14 @@ public class BankAppMain {
                     });
                 });
             });
-            path("/customers", () -> get(ctx -> ctx.json(userService.getUsers()), roles(AUTH.ANYONE)));
-            path("/employee", () -> {
-               get(ctx -> {});
-               post(ctx -> {});
-               put(ctx -> {});
-               delete(ctx -> {});
+            path("/account", () -> {
+               post(AccountController::postAccount, roles(AUTH.ANYONE));
             });
-            path("/employees", () -> get(ctx -> {}));
+            path("/accounts", () -> {
+                path("/:ownerId", () -> get(AccountController::getAll, roles(AUTH.ANYONE)));
+            });
+            path("/customers", () -> get(ctx -> ctx.json(userService.getUsers()), roles(AUTH.ANYONE)));
+
 
         });
     }

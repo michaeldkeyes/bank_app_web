@@ -2,7 +2,7 @@ package org.bankapp.users.impl;
 
 import org.apache.log4j.Logger;
 import org.bankapp.security.PasswordHasher;
-import org.bankapp.users.User;
+import org.bankapp.users.model.User;
 import org.bankapp.users.UserDAO;
 import org.bankapp.users.UserService;
 

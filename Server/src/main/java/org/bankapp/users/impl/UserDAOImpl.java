@@ -1,7 +1,7 @@
 package org.bankapp.users.impl;
 
 import org.bankapp.dbutils.PostgresConnection;
-import org.bankapp.users.User;
+import org.bankapp.users.model.User;
 import org.bankapp.users.UserDAO;
 
 import java.sql.*;
@@ -64,7 +64,7 @@ public class UserDAOImpl implements UserDAO {
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 ResultSet resultSet = preparedStatement.executeQuery();
 
-                while(resultSet.next()) {
+                while (resultSet.next()) {
                     User user = new User();
                     user.setId(resultSet.getInt("id"));
                     user.setUsername(resultSet.getString("username"));

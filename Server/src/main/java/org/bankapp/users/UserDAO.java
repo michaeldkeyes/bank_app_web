@@ -1,5 +1,7 @@
 package org.bankapp.users;
 
+import org.bankapp.users.model.User;
+
 import java.util.List;
 
 public interface UserDAO {

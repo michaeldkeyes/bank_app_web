@@ -11,6 +11,7 @@ import java.sql.SQLException;
 public class AccountController {
     private static final AccountService accountService = new AccountServiceImpl();
     private static final Logger logger = Logger.getLogger(AccountController.class);
+    private static final String sqlError = "Internal server error";
 
     private AccountController() {}
 
@@ -21,7 +22,7 @@ public class AccountController {
             ctx.status(201).json("Successfully posted new Account");
             logger.info("New account created: " + account.toString());
         } catch (SQLException e) {
-            ctx.status(500).json("Internal server error");
+            ctx.status(500).json(sqlError);
             logger.error(e);
         }
     }
@@ -31,7 +32,18 @@ public class AccountController {
             ctx.json(accountService.getAllAccounts(Integer.parseInt(ctx.pathParam("ownerId"))));
             logger.info("Retrieved accounts for User Id: " + ctx.pathParam("ownerId"));
         } catch (SQLException e) {
-            ctx.status(500).json("Internal server error");
+            ctx.status(500).json(sqlError);
+            logger.error(e);
+        }
+    }
+
+    public static void update(Context ctx) {
+        Account account = ctx.bodyAsClass(Account.class);
+        try {
+            ctx.json(accountService.updateAccount(account));
+            logger.info("Updated account" + account.toString());
+        } catch (SQLException e) {
+            ctx.status(500).json(sqlError);
             logger.error(e);
         }
     }

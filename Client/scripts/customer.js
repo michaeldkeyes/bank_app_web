@@ -133,7 +133,7 @@ function doTransaction(transactionData) {
   let formData = new FormData(transactionForm);
   formData = Object.fromEntries(formData.entries());
   if (formData.amount > 0) {
-    if (formData.type === "withdraw") {
+    if (formData.type === "withdraw" || formData.type === "transfer") {
       if (formData.amount < user.accounts[index].balance) {
         formData.amount *= -1;
       } else {
@@ -151,7 +151,14 @@ function doTransaction(transactionData) {
 }
 
 async function send(formData, index) {
-  const url = `http://localhost:7000/transaction`;
+  let url = `http://localhost:7000/transaction`;
+
+  if (formData.type === "transfer") {
+    const { accountToTransferToId } = formData;
+    url = `http://localhost:7000/transaction/${accountToTransferToId}`;
+    formData.type = "withdraw";
+    delete formData.accountToTransferToId;
+  }
 
   try {
     const response = await fetch(url, {
@@ -211,6 +218,14 @@ createSavingsBtn.addEventListener("click", () => {
 createCheckingBtn.addEventListener("click", () => {
   createNewAccount(createCheckingBtn.dataset.type);
 });
+
+function check() {
+  if (document.getElementById("transfer").checked === true) {
+    document.getElementById("transferInput").hidden = false;
+  } else {
+    document.getElementById("transferInput").hidden = true;
+  }
+}
 
 async function createNewAccount(type) {
   const url = `http://localhost:7000/account`;

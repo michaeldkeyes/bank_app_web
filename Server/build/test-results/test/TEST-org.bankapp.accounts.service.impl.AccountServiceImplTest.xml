@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.bankapp.accounts.service.impl.AccountServiceImplTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-05-14T05:07:31" hostname="DESKTOP-D58CC64" time="0.476">
-  <properties/>
-  <testcase name="updateBalance()" classname="org.bankapp.accounts.service.impl.AccountServiceImplTest" time="0.448"/>
-  <testcase name="updateAccount()" classname="org.bankapp.accounts.service.impl.AccountServiceImplTest" time="0.004"/>
-  <testcase name="getAllAccounts()" classname="org.bankapp.accounts.service.impl.AccountServiceImplTest" time="0.02"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

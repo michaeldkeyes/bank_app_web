@@ -1,4 +1,4 @@
-function registerCustomer(e, content) {
+function registerCustomer(e) {
   e.preventDefault();
   let formData = new FormData(e.currentTarget);
   formData = Object.fromEntries(formData.entries());

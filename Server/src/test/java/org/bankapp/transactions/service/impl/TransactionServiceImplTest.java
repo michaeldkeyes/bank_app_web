@@ -13,10 +13,8 @@ import org.mockito.MockitoAnnotations;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.Set;
-
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
+import java.util.List;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
@@ -32,14 +30,14 @@ class TransactionServiceImplTest {
     private TransactionServiceImpl transactionService;
 
     private Transaction transaction;
-    private Set<Transaction> transactions;
+    private List<Transaction> transactions;
     private Account account;
 
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         transaction = new Transaction();
-        transactions = new HashSet<>();
+        transactions = new ArrayList<>();
         transactions.add(transaction);
         account = new Account();
     }

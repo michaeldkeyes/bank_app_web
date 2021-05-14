@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
 class AccountServiceImplTest {
 
-    private final Account account = new Account(1, "Checking", BigDecimal.ZERO, 1, true );
+    private final Account account = new Account(1, "Checking", BigDecimal.ZERO, 1, true, 0 );
     private final Set<Account> accounts = new HashSet<>();
 
     @BeforeEach

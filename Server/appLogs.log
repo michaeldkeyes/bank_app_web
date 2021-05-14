@@ -1,3 +1,142 @@
 [INFO]    -    {org.bankapp.users.controllers.CustomerController}    All employees retrieved    May-14-21 Friday EDT 09:18:18    
 [INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 09:18:34    
 [INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 09:51:05    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 21    May-14-21 Friday EDT 10:14:23    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 20    May-14-21 Friday EDT 10:14:23    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 20    May-14-21 Friday EDT 10:14:23    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 21    May-14-21 Friday EDT 10:14:26    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 20    May-14-21 Friday EDT 10:14:27    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 26    May-14-21 Friday EDT 10:14:27    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 20    May-14-21 Friday EDT 10:14:31    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:15:22    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:15:49    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:16:31    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 26    May-14-21 Friday EDT 10:16:36    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 20    May-14-21 Friday EDT 10:16:38    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 21    May-14-21 Friday EDT 10:16:38    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:17:43    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:17:59    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:18:44    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:18:53    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:20:01    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 20    May-14-21 Friday EDT 10:20:11    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    New transaction created: Transaction{id=0, amount=65.31, accountId=20, timestamp=null, type='deposit'}    May-14-21 Friday EDT 10:20:26    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:22:40    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:32:45    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:34:27    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:35:24    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:36:11    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:36:51    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:37:55    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:38:16    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:39:02    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:39:27    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:39:40    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    New transaction created: Transaction{id=0, amount=20.00, accountId=20, timestamp=null, type='transfer'}    May-14-21 Friday EDT 10:40:19    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 20    May-14-21 Friday EDT 10:40:28    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 10:41:35    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    New transaction created: Transaction{id=0, amount=-20.00, accountId=20, timestamp=null, type='withdraw'}    May-14-21 Friday EDT 11:04:12    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:17:13    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 26    May-14-21 Friday EDT 11:17:16    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 20    May-14-21 Friday EDT 11:17:17    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:20:09    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 20    May-14-21 Friday EDT 11:20:17    
+[INFO]    -    {org.bankapp.users.controllers.CustomerController}    Successful login: User{id=24, username='mKeyes87', password='1000:ccd694a93c6218d1caeb5c2c47bc2f57:d8efb8ff982b7348b29e49a56453470749291d4216c9e0e90a0dd5a2d69ee3453e5cdc87e1633fa41259a10da43ef2fc2c4d0b9df7d3bc7ba2391f6333f370de', dateCreated=2021-05-12, type='Customer', accounts=null}    May-14-21 Friday EDT 11:20:32    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 20    May-14-21 Friday EDT 11:20:33    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:21:37    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 20    May-14-21 Friday EDT 11:21:39    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:22:14    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:25:00    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:25:19    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    New transaction created: Transaction{id=0, amount=-20.37, accountId=20, timestamp=null, type='withdraw'}    May-14-21 Friday EDT 11:25:49    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 20    May-14-21 Friday EDT 11:25:59    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:28:56    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 11:29:07    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:29:12    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 11:29:13    
+[INFO]    -    {org.bankapp.users.controllers.CustomerController}    Failed login    May-14-21 Friday EDT 11:29:37    
+[INFO]    -    {org.bankapp.users.controllers.CustomerController}    Successful login: User{id=27, username='username', password='1000:854a3d2a6986f85454764483395df127:8506e4c65513019a008a0f200df2b4109ee692653dea0c14475dc6625b0492158812e6bd384a17125972ba103eb3e4da56f667c2597796ddebe269ad227ee673', dateCreated=2021-05-13, type='Customer', accounts=null}    May-14-21 Friday EDT 11:29:43    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    New account created: Account{accountId=0, type='Savings', balance=0, ownerId=27, pending=true, createdAt=null, approvedBy=0}    May-14-21 Friday EDT 11:29:48    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 24    May-14-21 Friday EDT 11:31:40    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 25    May-14-21 Friday EDT 11:31:43    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 24    May-14-21 Friday EDT 11:31:45    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved transactions for account Id: 25    May-14-21 Friday EDT 11:31:48    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:48:52    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:48:58    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:49:26    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:50:02    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 11:50:07    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:50:11    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 11:50:14    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:50:14    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:52:11    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:52:14    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 11:52:16    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:52:18    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 11:52:19    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:52:20    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 11:52:46    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 11:52:56    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 11:52:57    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:03:08    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 12:03:11    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:03:12    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:11:18    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:13:03    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 12:13:12    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:13:24    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:14:49    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:15:25    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 12:15:28    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:15:50    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 12:15:53    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:16:30    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:16:45    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:16:54    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 12:16:58    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:17:53    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 12:17:56    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:18:21    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 12:18:23    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:20:17    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:21:35    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:22:02    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 12:22:08    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:22:13    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:23:11    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:23:28    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:33:00    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:33:13    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:33:19    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 12:33:50    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:34:30    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 12:34:32    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:35:16    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:35:33    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 12:35:49    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:36:18    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 12:36:20    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    Successfully created a new employee    May-14-21 Friday EDT 12:36:39    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 12:36:46    
+[INFO]    -    {org.bankapp.users.controllers.CustomerController}    Successful login: User{id=33, username='drVinay', password='1000:26590605267e6574d0a2a2d79aa5f565:a81a2302f87f144677a6439617223a7b278cae1e26ee2c0965d59806735faf224c4a240f579185e44eee2e8363ba7f7d0b7c3bb80ece6261ce6b2f55f480efe6', dateCreated=2021-05-14, type='Employee', accounts=null}    May-14-21 Friday EDT 12:37:08    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:37:08    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 12:37:12    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:37:15    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved all transactions    May-14-21 Friday EDT 12:55:59    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 12:59:30    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 13:02:21    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 13:02:23    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 13:03:00    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 13:03:11    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 13:03:13    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 13:03:14    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 13:03:18    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 13:03:19    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 13:03:19    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 13:09:54    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 13:11:52    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 13:12:03    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 13:12:03    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 13:12:36    
+[INFO]    -    {org.bankapp.users.controllers.EmployeeController}    All employees retrieved    May-14-21 Friday EDT 13:12:40    
+[INFO]    -    {org.bankapp.transactions.controller.TransactionController}    Retrieved all transactions    May-14-21 Friday EDT 13:12:41    

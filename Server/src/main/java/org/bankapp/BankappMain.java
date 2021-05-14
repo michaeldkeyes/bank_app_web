@@ -44,8 +44,17 @@ public class BankAppMain {
                 get(AccountController::getAll);
                 path("/:ownerId", () -> get(AccountController::getAllWithOwnerId));
             });
-            path("/transaction", () -> post(TransactionController::postTransaction));
-            path("/transactions", () -> path("/:accountId", () -> get(TransactionController::getAll)));
+            path("/transaction", () -> {
+                post(TransactionController::postTransaction);
+                path("/:accountTransferToId", () -> {
+                    post(TransactionController::transfer);
+                });
+            });
+            path("/transactions", () -> {
+                get(TransactionController::getAll);
+                path("/:accountId", () -> get(TransactionController::getAllByAccount));
+            });
+            path("/employee", () -> post(EmployeeController::postEmployee));
             path("/employees", () -> get(EmployeeController::getAll));
         });
     }

@@ -14,6 +14,13 @@ async function fetchEmployees() {
   return data;
 }
 
+async function fetchTransactions() {
+  const url = "http://localhost:7000/transactions";
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}
+
 async function displayAccountTable() {
   const data = await fetchAccounts();
   document.getElementById("manage").innerText = "Manage Accounts";
@@ -157,9 +164,105 @@ employees.addEventListener("click", () => {
   displayEmployeeTable();
 });
 
+async function displayTransactionsTable() {
+  const data = await fetchTransactions();
+  document.getElementById("manage").innerText = "Manage Transactions";
+  document.getElementById("add").innerText = "Add new transaction";
+
+  table.innerHTML = `
+    ${transactionHeadTemplate()}
+    ${data.map(transactionTemplate).join("")}
+    ${tableEnd()}
+  `;
+}
+
+function transactionHeadTemplate() {
+  return `
+  <thead>
+    <tr>
+      <th></th>
+      <th>id</th>
+      <th>amount</th>
+      <th>accountId</th>
+      <th>type</th>
+      <th>timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+  `;
+}
+
+function transactionTemplate(transaction) {
+  return `
+    <tr>
+      <td></td>
+      <td>${transaction.id}</td>
+      <td>${transaction.amount}</td>
+      <td>${transaction.accountId}</td>
+      <td>${transaction.type}</td>
+      <td>${transaction.timestamp}</td>
+      
+      <td>
+        <button class="btn btn-warning">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button class="btn btn-danger">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </td>
+    </tr>
+`;
+}
+
 logoutBtn.addEventListener("click", () => {
   localStorage.removeItem("employee");
   window.location.replace("http://127.0.0.1:5500/public/employeeLogin.html");
 });
+
+const registerEmployeeForm = document.getElementById("registerEmployeeForm");
+registerEmployeeForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let formData = new FormData(e.currentTarget);
+  formData = Object.fromEntries(formData.entries());
+
+  if (validatePasswords(formData)) {
+    const { username, password } = formData;
+    formData = {
+      username,
+      password,
+      type: "Employee",
+    };
+    sendData(formData);
+  } else {
+    document.getElementById("message").innerText = "Passwords Must Match!";
+  }
+});
+
+function validatePasswords(plainFormData) {
+  if (plainFormData.password === plainFormData.confirmPassword) {
+    return true;
+  }
+
+  return false;
+}
+
+async function sendData(formData) {
+  try {
+    const response = await fetch("http://localhost:7000/employee", {
+      method: "POST",
+      body: JSON.stringify(formData),
+    });
+
+    if (!response.ok) {
+      console.log(response.status + " " + response);
+      return;
+    }
+
+    const data = await response.json();
+    document.getElementById("message").innerHTML = data;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 displayAccountTable();

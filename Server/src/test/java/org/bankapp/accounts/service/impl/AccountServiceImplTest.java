@@ -11,7 +11,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,7 +23,7 @@ import static org.mockito.Mockito.*;
 class AccountServiceImplTest {
 
     private final Account account = new Account(1, "Checking", BigDecimal.ZERO, 1, true, 0 );
-    private final Set<Account> accounts = new HashSet<>();
+    private final List<Account> accounts = new ArrayList<>();
 
     @BeforeEach
     void setUp() {

@@ -18,6 +18,7 @@ async function fetchTransactions() {
   const url = "http://localhost:7000/transactions";
   const response = await fetch(url);
   const data = await response.json();
+  localStorage.setItem("transactions", JSON.stringify(data));
   return data;
 }
 
@@ -193,14 +194,16 @@ function transactionHeadTemplate() {
 }
 
 function transactionTemplate(transaction) {
+  const date = new Date(transaction.timestamp);
+
   return `
     <tr>
       <td></td>
       <td>${transaction.id}</td>
-      <td>${transaction.amount}</td>
+      <td>$${transaction.amount.toFixed(2)}</td>
       <td>${transaction.accountId}</td>
       <td>${transaction.type}</td>
-      <td>${transaction.timestamp}</td>
+      <td>${date}</td>
       
       <td>
         <button class="btn btn-warning">

@@ -6,8 +6,8 @@ import org.bankapp.dbutils.PostgresConnection;
 
 import java.math.BigDecimal;
 import java.sql.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccountDAOImpl implements AccountDAO {
     @Override
@@ -53,8 +53,8 @@ public class AccountDAOImpl implements AccountDAO {
     }
 
     @Override
-    public Set<Account> getAllAccounts(int ownerId) throws SQLException {
-        Set<Account> accounts = new HashSet<>();
+    public List<Account> getAllAccounts(int ownerId) throws SQLException {
+        List<Account> accounts = new ArrayList<>();
         try (Connection connection = PostgresConnection.getConnection()) {
             String sql = "SELECT account_id, \"type\", balance, owner_id, pending, created_at FROM bank_schema.accounts WHERE owner_id = ?;\n";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -80,8 +80,8 @@ public class AccountDAOImpl implements AccountDAO {
         return accounts;
     }
 
-    public Set<Account> getAllAccounts() throws SQLException {
-        Set<Account> accounts = new HashSet<>();
+    public List<Account> getAllAccounts() throws SQLException {
+        List<Account> accounts = new ArrayList<>();
         try (Connection connection = PostgresConnection.getConnection()) {
             String sql = "SELECT account_id, \"type\", balance, owner_id, pending, created_at FROM bank_schema.accounts;\n";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {

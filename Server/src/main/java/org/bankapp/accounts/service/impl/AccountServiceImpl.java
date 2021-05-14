@@ -6,7 +6,7 @@ import org.bankapp.accounts.service.AccountService;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
-import java.util.Set;
+import java.util.List;
 
 public class AccountServiceImpl implements AccountService {
     private final AccountDAO dao;
@@ -21,11 +21,11 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Set<Account> getAllAccounts(int ownerId) throws SQLException {
+    public List<Account> getAllAccounts(int ownerId) throws SQLException {
         return dao.getAllAccounts(ownerId);
     }
 
-    public Set<Account> getAllAccounts() throws SQLException {
+    public List<Account> getAllAccounts() throws SQLException {
         return dao.getAllAccounts();
     }
 

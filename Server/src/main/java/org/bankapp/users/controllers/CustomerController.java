@@ -12,7 +12,7 @@ import org.bankapp.users.UserService;
 import org.bankapp.users.impl.UserServiceImpl;
 
 import java.sql.SQLException;
-import java.util.Set;
+import java.util.List;
 
 public class CustomerController {
     private static final UserService userService = new UserServiceImpl(new UserDAOImpl());
@@ -36,7 +36,7 @@ public class CustomerController {
             User storedUser = userService.getUser(user.getUsername());
             if (storedUser.getPassword() != null && userService.authorizeUser(user.getPassword(), storedUser.getPassword())) {
                 logger.info("Successful login: " + storedUser);
-                Set<Account> accounts =  accountService.getAllAccounts(storedUser.getId());
+                List<Account> accounts =  accountService.getAllAccounts(storedUser.getId());
                 storedUser.setAccounts(accounts);
                 ctx.json(storedUser);
             } else {

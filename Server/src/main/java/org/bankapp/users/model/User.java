@@ -3,7 +3,7 @@ package org.bankapp.users.model;
 import org.bankapp.accounts.model.Account;
 
 import java.sql.Date;
-import java.util.Set;
+import java.util.List;
 
 public class User {
     private int id;
@@ -11,15 +11,9 @@ public class User {
     private String password;
     private Date dateCreated;
     private String type;
-    private Set<Account> accounts;
+    private List<Account> accounts;
 
     public User() {
-    }
-
-    public User(String username, String password, String type) {
-        this.username = username;
-        this.password = password;
-        this.type = type;
     }
 
     public User(int id, String username, String password, Date dateCreated) {
@@ -69,11 +63,11 @@ public class User {
         this.dateCreated = dateCreated;
     }
 
-    public Set<Account> getAccounts() {
+    public List<Account> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(Set<Account> accounts) {
+    public void setAccounts(List<Account> accounts) {
         this.accounts = accounts;
     }
 

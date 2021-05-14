@@ -11,7 +11,3 @@ registerForm.addEventListener("submit", (e) => {
 loginForm.addEventListener("submit", (e) => {
   loginCustomer(e);
 });
-// $("#loginForm").on("submit", function (e) {
-//   console.log(e);
-//   loginCustomer(e);
-// });

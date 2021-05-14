@@ -10,14 +10,16 @@ public class User {
     private String username;
     private String password;
     private Date dateCreated;
+    private String type;
     private Set<Account> accounts;
 
     public User() {
     }
 
-    public User(String username, String password) {
+    public User(String username, String password, String type) {
         this.username = username;
         this.password = password;
+        this.type = type;
     }
 
     public User(int id, String username, String password, Date dateCreated) {
@@ -25,6 +27,14 @@ public class User {
         this.username = username;
         this.password = password;
         this.dateCreated = dateCreated;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getId() {
@@ -74,6 +84,8 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", dateCreated=" + dateCreated +
+                ", type='" + type + '\'' +
+                ", accounts=" + accounts +
                 '}';
     }
 }

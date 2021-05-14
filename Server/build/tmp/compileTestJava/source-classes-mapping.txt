@@ -1,0 +1,6 @@
+org/bankapp/accounts/service/impl/AccountServiceImplTest.java
+ org.bankapp.accounts.service.impl.AccountServiceImplTest
+org/bankapp/transactions/service/impl/TransactionServiceImplTest.java
+ org.bankapp.transactions.service.impl.TransactionServiceImplTest
+org/bankapp/users/impl/UserServiceImplTest.java
+ org.bankapp.users.impl.UserServiceImplTest

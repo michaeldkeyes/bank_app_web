@@ -13,14 +13,13 @@ async function loginCustomer(e) {
 
     if (!response.ok) {
       const message = await response.json();
-      console.log(message);
+      document.getElementById("errorMsg").innerText = `${message}`;
       return;
     }
 
     const data = await response.json();
     localStorage.setItem("user", JSON.stringify(data));
-    const user = JSON.parse(localStorage.getItem("user"));
-    console.log(user);
+    window.location.replace("http://127.0.0.1:5500/public/customer.html");
   } catch (error) {
     console.error(error);
   }

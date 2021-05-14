@@ -14,11 +14,11 @@ public class Account {
     public Account() {
     }
 
-    public Account(String type, BigDecimal balance, int ownerId, boolean pending) {
+    public Account(String type, int ownerId) {
         this.type = type;
-        this.balance = balance;
+        this.balance = BigDecimal.ZERO;
         this.ownerId = ownerId;
-        this.pending = pending;
+        this.pending = true;
     }
 
     public Account(int accountId, String type, BigDecimal balance, int ownerId, boolean pending) {

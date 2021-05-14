@@ -15,3 +15,36 @@
 .pricing-header {
   max-width: 700px;
 }
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.employeeMain {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: hsl(0, 0%, 96%);
+  height: 100vh;
+}
+
+.table-wrapper {
+  background: hsl(0, 0%, 100%);
+  padding: 20px 25px;
+  border-radius: 3px;
+  min-width: 1000px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.table-title {
+  background: hsl(213, 30%, 38%);
+  color: hsl(0, 0%, 100%);
+  padding: 16px 30px;
+  min-width: 100%;
+  margin: -20px -25px 10px;
+  border-radius: 3px 3px 0 0;
+}

@@ -80,6 +80,32 @@ public class AccountDAOImpl implements AccountDAO {
         return accounts;
     }
 
+    public Set<Account> getAllAccounts() throws SQLException {
+        Set<Account> accounts = new HashSet<>();
+        try (Connection connection = PostgresConnection.getConnection()) {
+            String sql = "SELECT account_id, \"type\", balance, owner_id, pending, created_at FROM bank_schema.accounts;\n";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                while (resultSet.next()) {
+                    Account account = new Account();
+                    account.setAccountId(resultSet.getInt("account_id"));
+                    account.setType(resultSet.getString("type"));
+                    account.setBalance(resultSet.getBigDecimal("balance"));
+                    account.setOwnerId(resultSet.getInt("owner_id"));
+                    account.setPending(resultSet.getBoolean("pending"));
+                    account.setCreatedAt(resultSet.getDate("created_at"));
+                    accounts.add(account);
+                }
+            }
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
+
+        return accounts;
+    }
+
     @Override
     public Account updateAccount(Account account) throws SQLException {
         try (Connection connection = PostgresConnection.getConnection()) {
@@ -107,8 +133,22 @@ public class AccountDAOImpl implements AccountDAO {
                 preparedStatement.setBigDecimal(1, newBalance);
                 preparedStatement.setInt(2, id);
 
-                int c = preparedStatement.executeUpdate();
-                System.out.println(c);
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
+    }
+
+    @Override
+    public void updatePending(int id, boolean pending) throws SQLException {
+        try (Connection connection = PostgresConnection.getConnection()) {
+            String sql = "UPDATE bank_schema.accounts SET pending=? WHERE account_id=?;\n";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setBoolean(1, pending);
+                preparedStatement.setInt(2, id);
+
+                preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
             throw new SQLException(e);

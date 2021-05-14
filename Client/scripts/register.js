@@ -2,17 +2,17 @@ function registerCustomer(e, content) {
   e.preventDefault();
   let formData = new FormData(e.currentTarget);
   formData = Object.fromEntries(formData.entries());
-  console.log(formData);
 
   if (validatePasswords(formData)) {
     const { username, password } = formData;
     formData = {
       username,
       password,
+      type: "Customer",
     };
     sendData(formData);
   } else {
-    console.log(formData);
+    document.getElementById("successMsg").innerText = "Passwords Must Match!";
   }
 }
 
@@ -36,7 +36,8 @@ async function sendData(formData) {
       return;
     }
 
-    const data = await response;
+    const data = await response.json();
+    document.getElementById("successMsg").innerHTML = data;
   } catch (error) {
     console.error(error);
   }

@@ -2,6 +2,8 @@ let user = JSON.parse(localStorage.getItem("user"));
 
 const greeting = document.getElementById("greeting");
 const accountsDiv = document.getElementById("accounts");
+const transactionsTable = document.getElementById("transactions");
+const logoutBtn = document.getElementById("logoutBtn");
 let transactionData;
 
 greeting.innerText = `Hello, ${user.username}!`;
@@ -22,10 +24,10 @@ function displayAccounts() {
     <div class="col">
       <div class="card mb-4 rounded-3 shadow-sm ${
         account.pending ? "" : "border-primary"
-      }">
+      }" >
         <div class="card-header py-3 ${
           account.pending ? "" : "text-white bg-primary border-primary"
-        }">
+        }" id="${account.pending ? "" : "accountCard"}" data-index="${index}">
           <h4 class="my-0 fw-normal">
             ${account.type}
           </h4>
@@ -53,6 +55,45 @@ function displayAccounts() {
   });
 }
 
+async function displayTransactionsTable(index) {
+  transactionsTable.innerHTML = "";
+  const tableStart = `
+    <div class="table-responsive">
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody>`;
+
+  const tableEnd = `</tbody>
+    </table>
+  </div>`;
+  const data = await getTransactions(index);
+
+  transactionsTable.innerHTML = `<h2 class="display-6 text-center mb-4">${
+    user.accounts[index].type
+  }: ${user.accounts[index].accountId}</h2>
+      ${tableStart}
+      ${data.map(transactionTemplate).join("")}
+      ${tableEnd}`;
+}
+
+function transactionTemplate(transaction) {
+  return `
+    <tr>
+      <td>${transaction.type}</td>
+      <td style="color: ${
+        transaction.amount > 0 ? "green" : "red"
+      }">$${transaction.amount.toFixed(2)}</td>
+      <td>${new Date(transaction.timestamp)}</td>
+    </tr>
+  `;
+}
+
 const transactionBtns = document.querySelectorAll("#transactionBtn");
 transactionBtns.forEach((button) => {
   if (!button.disabled) {
@@ -67,10 +108,24 @@ transactionBtns.forEach((button) => {
   }
 });
 
-sendBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  doTransaction(transactionData);
-});
+const accountCards = document.querySelectorAll("#accountCard");
+function addAccountCardEvents() {
+  accountCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      displayTransactionsTable(card.dataset.index);
+    });
+  });
+}
+
+addAccountCardEvents();
+
+function addSendBtnEvent() {
+  sendBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    doTransaction(transactionData);
+  });
+}
+addSendBtnEvent();
 
 function doTransaction(transactionData) {
   const transactionForm = document.getElementById("transactionForm");
@@ -114,10 +169,76 @@ async function send(formData, index) {
     document.getElementById(
       "transactionModalLabel"
     ).innerHTML = `<span style="color: green;">Successful ${formData.type} of ${formData.amount}</span>`;
-    console.log(data);
     user.accounts[index] = data;
     localStorage.setItem("user", JSON.stringify(user));
     displayAccounts();
+    addAccountCardEvents();
+    addSendBtnEvent();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function getTransactions(index) {
+  const accountId = user.accounts[index].accountId;
+  const url = `http://localhost:7000/transactions/${accountId}`;
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      const message = await response.json();
+      console.error(message);
+      return;
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+logoutBtn.addEventListener("click", () => {
+  localStorage.removeItem("user");
+  window.location.replace("http://127.0.0.1:5500/public/index.html");
+});
+
+createSavingsBtn.addEventListener("click", () => {
+  createNewAccount(createSavingsBtn.dataset.type);
+});
+
+createCheckingBtn.addEventListener("click", () => {
+  createNewAccount(createCheckingBtn.dataset.type);
+});
+
+async function createNewAccount(type) {
+  const url = `http://localhost:7000/account`;
+  const account = {
+    type,
+    ownerId: user.id,
+    balance: 0,
+    pending: true,
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify(account),
+    });
+
+    if (!response.ok) {
+      const message = await response.json();
+      console.log(message);
+      return;
+    }
+
+    const data = await response.json();
+    user.accounts = [...user.accounts, account];
+    localStorage.setItem("user", JSON.stringify(user));
+    displayAccounts();
+    addSendBtnEvent();
+    addAccountCardEvents();
   } catch (error) {
     console.error(error);
   }

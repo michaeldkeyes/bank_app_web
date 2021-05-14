@@ -13,5 +13,5 @@ public interface AccountDAO {
     Set<Account> getAllAccounts(int ownerId) throws SQLException;
     Account updateAccount(Account account) throws SQLException;
     void updateBalance(int id, BigDecimal newBalance) throws SQLException;
-    void updatePending(int id, boolean pending) throws SQLException;
+    void updatePending(int id, boolean pending, int approvedBy) throws SQLException;
 }

@@ -55,4 +55,10 @@ class UserServiceImplTest {
         assertEquals(userService.updateUser(user).getId(), user.getId());
     }
 
+    @Test
+    void getEmployees() throws SQLException {
+        when(dao.getEmployees()).thenReturn(users);
+        assertEquals(userService.getEmployees().size(), users.size());
+    }
+
 }

@@ -6,6 +6,7 @@ import org.bankapp.accounts.controller.AccountController;
 import org.bankapp.transactions.controller.TransactionController;
 import org.bankapp.users.UserService;
 import org.bankapp.users.controllers.CustomerController;
+import org.bankapp.users.controllers.EmployeeController;
 import org.bankapp.users.impl.UserDAOImpl;
 import org.bankapp.users.impl.UserServiceImpl;
 import org.bankapp.users.model.User;
@@ -37,7 +38,7 @@ public class BankAppMain {
             path("/account", () -> {
                 post(AccountController::postAccount);
                 put(AccountController::update);
-                patch(AccountController::patch);
+                path("/:approvedBy", () -> patch(AccountController::patch));
             });
             path("/accounts", () -> {
                 get(AccountController::getAll);
@@ -45,7 +46,7 @@ public class BankAppMain {
             });
             path("/transaction", () -> post(TransactionController::postTransaction));
             path("/transactions", () -> path("/:accountId", () -> get(TransactionController::getAll)));
-
+            path("/employees", () -> get(EmployeeController::getAll));
         });
     }
 }

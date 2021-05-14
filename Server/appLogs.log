@@ -1,0 +1,3 @@
+[INFO]    -    {org.bankapp.users.controllers.CustomerController}    All employees retrieved    May-14-21 Friday EDT 09:18:18    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 09:18:34    
+[INFO]    -    {org.bankapp.accounts.controller.AccountController}    Retrieved all accounts    May-14-21 Friday EDT 09:51:05    

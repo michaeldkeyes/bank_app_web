@@ -64,8 +64,9 @@ public class AccountController {
 
     public static void patch(Context ctx) {
         Account account = ctx.bodyAsClass(Account.class);
+        int approvedBy = Integer.parseInt(ctx.pathParam("approvedBy"));
         try {
-            accountService.updatePending(account.getAccountId(), false);
+            accountService.updatePending(account.getAccountId(), false, approvedBy);
             ctx.status(204);
             logger.info("Approved account: " + account.getAccountId());
         } catch (SQLException e) {

@@ -96,6 +96,16 @@ public class AccountDAOImpl implements AccountDAO {
                     account.setOwnerId(resultSet.getInt("owner_id"));
                     account.setPending(resultSet.getBoolean("pending"));
                     account.setCreatedAt(resultSet.getDate("created_at"));
+
+                    String sql1 = "SELECT account_id, approved_by FROM bank_schema.approved_accounts WHERE account_id = ?;\n";
+                    try (PreparedStatement ps = connection.prepareStatement(sql1)) {
+                        ps.setInt(1, account.getAccountId());
+                        ResultSet rs = ps.executeQuery();
+                        if (rs.next()) {
+                            account.setApprovedBy(rs.getInt("approved_by"));
+                        }
+                    }
+
                     accounts.add(account);
                 }
             }
@@ -141,12 +151,19 @@ public class AccountDAOImpl implements AccountDAO {
     }
 
     @Override
-    public void updatePending(int id, boolean pending) throws SQLException {
+    public void updatePending(int id, boolean pending, int approvedBy) throws SQLException {
         try (Connection connection = PostgresConnection.getConnection()) {
             String sql = "UPDATE bank_schema.accounts SET pending=? WHERE account_id=?;\n";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setBoolean(1, pending);
                 preparedStatement.setInt(2, id);
+
+                preparedStatement.executeUpdate();
+            }
+            sql = "INSERT INTO bank_schema.approved_accounts (account_id, approved_by) VALUES(?, ?);\n";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setInt(1, id);
+                preparedStatement.setInt(2, approvedBy);
 
                 preparedStatement.executeUpdate();
             }

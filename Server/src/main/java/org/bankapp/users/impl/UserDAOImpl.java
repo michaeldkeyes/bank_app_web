@@ -82,6 +82,32 @@ public class UserDAOImpl implements UserDAO {
         return users;
     }
 
+    @Override
+    public List<User> getEmployees() throws SQLException {
+        List<User> users = new ArrayList<>();
+        try (Connection connection = PostgresConnection.getConnection()) {
+            String sql = "SELECT id, username, \"password\", date_created, type FROM bank_schema.users WHERE type = ?;\n";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, "Employee");
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                while (resultSet.next()) {
+                    User user = new User();
+                    user.setId(resultSet.getInt("id"));
+                    user.setUsername(resultSet.getString("username"));
+                    user.setPassword(resultSet.getString("password"));
+                    user.setDateCreated(resultSet.getDate("date_created"));
+                    user.setType(resultSet.getString("type"));
+                    users.add(user);
+                }
+            }
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
+        return users;
+    }
+
     public void saveUser(User user) throws SQLException {
         try (Connection connection = PostgresConnection.getConnection()) {
             String sql = "INSERT INTO bank_schema.users (username, \"password\", date_created, type) VALUES(?, ?, ?, ?);\n";

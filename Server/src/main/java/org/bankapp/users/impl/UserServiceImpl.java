@@ -35,6 +35,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> getEmployees() throws SQLException {
+        return dao.getEmployees();
+    }
+
+    @Override
     public void createUser(User user) throws SQLException {
         try {
             user.setPassword(PasswordHasher.generateStrongPasswordHash(user.getPassword()));

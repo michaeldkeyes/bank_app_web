@@ -10,6 +10,7 @@ public class Account {
     private int ownerId;
     private boolean pending;
     private Date createdAt;
+    private int approvedBy;
 
     public Account() {
     }
@@ -21,12 +22,13 @@ public class Account {
         this.pending = true;
     }
 
-    public Account(int accountId, String type, BigDecimal balance, int ownerId, boolean pending) {
+    public Account(int accountId, String type, BigDecimal balance, int ownerId, boolean pending, int approvedBy) {
         this.accountId = accountId;
         this.type = type;
         this.balance = balance;
         this.ownerId = ownerId;
         this.pending = pending;
+        this.approvedBy = approvedBy;
     }
 
     public int getAccountId() {
@@ -77,6 +79,14 @@ public class Account {
         this.createdAt = createdAt;
     }
 
+    public int getApprovedBy() {
+        return approvedBy;
+    }
+
+    public void setApprovedBy(int approvedBy) {
+        this.approvedBy = approvedBy;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
@@ -86,6 +96,7 @@ public class Account {
                 ", ownerId=" + ownerId +
                 ", pending=" + pending +
                 ", createdAt=" + createdAt +
+                ", approvedBy=" + approvedBy +
                 '}';
     }
 }

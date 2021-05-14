@@ -45,8 +45,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void updatePending(int id, boolean pending) throws SQLException {
-        dao.updatePending(id, pending);
+    public void updatePending(int id, boolean pending, int approvedBy) throws SQLException {
+        dao.updatePending(id, pending, approvedBy);
     }
 
 
